@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <title>EventosApp</title>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+</head>
+<body>
+
+    <h1>Cadastro de Eventos</h1>
+    <h3><a href="/eventos" class="waves-effect waves-light btn"><i class="material-icons left">list</i>Lista de Eventos</a></h3>
+
+    <form class="container" method="post">
+        Nome: <input type="text" value="" name="nome"/>
+        <div class="row">
+            <div class="input-fild col s6">
+                Local: <input type="text" value="" name="local"/>
+            </div>
+            <div class="input-fild col s3">
+                Data: <input type="date" value="" name="data"/>
+            </div>
+            <div class="input-fild col s3">
+                Horario: <input type="text" value="" name="horario"/>
+            </div>
+        </div>
+        <button class="waves-effect waves-light btn" type="submit">Salvar</button>
+
+       <!-- <a type="submit" class="waves-effect waves-light btn"><i class="material-icons left">add_box</i>Cadastrar Novo Evento</a> -->
+
+
+
+    </form>
+
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1min.js"></script>
+    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+
+
+
+</body>
+</html>
