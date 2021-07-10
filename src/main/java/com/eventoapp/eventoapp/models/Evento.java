@@ -1,6 +1,7 @@
 package com.eventoapp.eventoapp.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.List;
 
@@ -12,12 +13,20 @@ public class Evento implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long codigo;
+
+
     private String nome;
+
+
     private String local;
+
+
     private String data;
+
+
     private String horario;
 
-    @OneToMany
+    @OneToMany(mappedBy = "evento", cascade = CascadeType.ALL)
     private List<Convidado> convidados;
 
     public long getCodigo() {
