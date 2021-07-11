@@ -9,5 +9,7 @@ https://www.youtube.com/watch?v=OHn1jLHGptw&list=PL8iIphQOyG-DHLpEx1TPItqJamy08f
 
 Neste projeto utilizamos o ambiente start.spring.io para gerar o projeto configurado para o maven e java 11.
 Foi desenvolvida as camadas Model View e Controller.
-Utilizou-se o banco de dados mysql.
+Utilizou-se o banco de dados Postegresql.
 Foi utilizado o materialize css na aplicação.
+O deploy foi feito no heroku e a aplicação pode ser acessada em:
+https://cadastro-de-eventos-app.herokuapp.com/eventos

@@ -55,3 +55,42 @@ public class DataConfiguration {
         return adapter;
     }
 }
+
+
+Dougla'z Silva
+há 2 anos (editado)
+Para quem está com dificuldades no deploy, segue esse passo a passo que não tem erro.
+1. Abra o terminal e acesse a pasta do projeto com comando "cd C:/seu/diretorio"
+2. Dentro da pasta do projeto execute
+        heroku login
+        git init
+        git add .
+        git commit -m "Initial commit"
+        heroku create <app-name>
+        git push heroku master
+3. Adicione esta dependencia no pom.xml
+       <dependency>
+              <groupId>org.postgresql</groupId>
+              <artifactId>postgresql</artifactId>
+              <version>9.4-1201-jdbc4</version>
+      </dependency>
+4. Edite o arquivo application.properties para ficar assim:
+       spring.datasource.url=${JDBC_DATABASE_URL}
+       spring.datasource.username=${JDBC_DATABASE_USERNAME}
+       spring.datasource.password=${JDBC_DATABASE_PASSWORD}
+       spring.jpa.show-sql=false
+       spring.jpa.generate-ddl=true
+       spring.jpa.hibernate.ddl-auto=create
+5. Agora execute o comando no terminal para adicionar o postgresql a aplicação:
+       heroku addons:create heroku-postgresql
+6. Atualize seu projeto ainda no terminal
+      git add .
+      git commit -m "adicionando postgresql a aplicação"
+      git push heroku master
+      heroku open(abre o projeto)
+
+obs:
+      Após a primeira execução, altere o arquivo application.properties,  onde spring.jpa.hibernate.ddl-auto=create altere para spring.jpa.hibernate.ddl-auto=update, pois essa linha com o "create" cria as tabelas automaticamente e toda vez que for adicionado um novo registro ele criará a tabela novamente ocasionando em possíveis percas de dados. Depois de alterado, execute:
+       git add .
+       git commit -m "Atualizando arquivo application.properties"
+       git push heroku master
