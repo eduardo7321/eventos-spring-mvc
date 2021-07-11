@@ -1,0 +1,57 @@
+Host
+ec2-3-231-69-204.compute-1.amazonaws.com
+Database
+d75jgsa9h417fe
+User
+qxgflacnbbestt
+Port
+5432
+Password
+a26045725e308ca57a7bca7280b3ebea632e9f82ee1ff36342d827b3c586b1f3
+URI
+postgres://qxgflacnbbestt:a26045725e308ca57a7bca7280b3ebea632e9f82ee1ff36342d827b3c586b1f3@ec2-3-231-69-204.compute-1.amazonaws.com:5432/d75jgsa9h417fe
+Heroku CLI
+heroku pg:psql postgresql-lively-52726 --app cadastro-de-eventos-app
+
+
+
+
+
+//PARA O MYSQL USAR CODIGO ABAIXO
+
+package com.eventoapp.eventoapp;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.jpa.JpaVendorAdapter;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+
+import javax.sql.DataSource;
+
+@Configuration
+public class DataConfiguration {
+
+    @Bean
+    public DataSource dataSource(){
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+       // dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/eventosapp");
+        dataSource.setUsername("root");
+        dataSource.setPassword("micro1717");
+        return dataSource;
+    }
+
+    @Bean
+    public JpaVendorAdapter jpaVendorAdapter(){
+        HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
+       // adapter.setDatabase(Database.MYSQL);
+        adapter.setShowSql(true);
+        adapter.setGenerateDdl(true);
+        adapter.setDatabasePlatform("org.hibernate.dialect.MySQL5Dialect");
+        adapter.setDatabasePlatform("org.hibernate.dialect.MySQL5Dialect");
+        adapter.setPrepareConnection(true);
+        return adapter;
+    }
+}
